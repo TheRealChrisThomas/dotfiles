@@ -10,7 +10,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 # Path to Maven
 export M2_HOME=$HOME/apache-maven-3.3.9
 export PATH=$PATH:$M2_HOME/bin
-
+export PATH=$PATH:/usr/local/bin/budgetocity
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -62,6 +62,9 @@ plugins=(git)
 eval 'ssh-agent'
 source $ZSH/oh-my-zsh.sh
 
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -91,3 +94,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cm="git add -A && git commit -m"
+eval "$(pyenv init -)"
